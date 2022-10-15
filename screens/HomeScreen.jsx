@@ -90,7 +90,8 @@ class HomeScreenClass extends React.Component {
         var result = await this.postFile(edittedImageUri);
         console.log("result request");
         console.log(result);
-        if (result.IsErroredOnProcessing) {
+        var parsedText = result.ParsedResults[0].ParsedText;
+        if (result.IsErroredOnProcessing || parsedText.length === 0) {
             Alert.alert(
                 "Error",
                 "Can't get OCR Image",
@@ -98,9 +99,7 @@ class HomeScreenClass extends React.Component {
                     { text: "OK", onPress: () => console.log("OK Pressed") }
                 ]
             );
-            return;
         }
-        var parsedText = result.ParsedResults[0].ParsedText;
         this.setOcrResult(parsedText);
         this.setProcessing(false);
     }
