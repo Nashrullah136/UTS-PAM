@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as ImageManipulator from 'expo-image-manipulator';
+import { Box } from 'native-base'
 
 export class CameraScreenClass extends React.Component {
     styles = StyleSheet.create({
@@ -99,7 +100,7 @@ export class CameraScreenClass extends React.Component {
                 <Camera ref={this.props.cameraRef} style={this.styles.camera} type={this.state.type} onCameraReady={this.cameraIsReady}>
                     <View style={this.styles.buttonContainer}>
                         <TouchableOpacity style={this.styles.button} onPress={this.takePicture}>
-                            <Text style={this.styles.text}>Take Picture</Text>
+                            <Box rounded="full" w="12" h="12" bg="white"/>
                         </TouchableOpacity>
                     </View>
                 </Camera>
